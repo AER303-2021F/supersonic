@@ -17,11 +17,3 @@ $$P_{o2}=P_1\left(\frac{1.4+1}{2}1\right)^\frac{1.4}{1.4-1}\left(\frac{2*1.4}{1.
 $$P_{o2}=1.8929P_1$$
 
 For $P_1=1atm$, $P_{o2}=1.8929 $ atm.
-
-## Q1, Eric
-
-a) the light source should be placed at the focal point of the first mirror to insure the light passes through parallely after the mirror. Which indicates that $d_1 = 762 mm$
-
-b) TBH I don't think this distance matters... cuz it's just letting the light pass through
-
-c) the knife edge should be on the focal length of the second mirror (I like the reason of transmittance of the disturbed light. I did not know that before)
