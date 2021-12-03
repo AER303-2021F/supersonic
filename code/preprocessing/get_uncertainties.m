@@ -1,8 +1,6 @@
-% DEFUNCT; no longer needed
-
-function [static, total] = get_time_series(trial)
+function d_pressures = get_uncertainties(trial)
 %{
-returns the full time series associated with a given experiment run
+returns the pressure uncertainties associated with a given experiment run
 
 Parameters
 ----------
@@ -11,44 +9,46 @@ trial: str
 
 Returns
 -------
-static: matrix (2500, 7)
-    time series of static measurements @ 500 Hz
+d_pressures: matrix (2, 7)
+    Precision uncertainty of static and total pressures corresponding to each position.
+    First row: Static port pressures
+    Second row: Total pressures
 
-total: matrix (1000, 7)
-    time series of total measurements @ 500 Hz
 Notes
 -----
 This function assumes that you are running code from the "code" folder,
 otherwise the file paths will be messed up.
+
+Calculation
+-----------
+Precision uncertainty = (standard deviation) / sqrt(N) * 1.96
 %}
+
+d_pressures = zeros(2, 7);
 
 if trial == "subsonic"
     % Static Ports
     load("../data/raw_data/subsonic/191028_Group1_StaticTapData_supersonic_7.mat"...
-        , "dataP");
-   	static = dataP(:, 1:7);
-    
-    total = zeros(1000, 7);
+        , "Pstd", "numScans");
+    d_pressures(1, :) = Pstd(1:7) / sqrt(numScans) * 1.96;
     
     % Total Ports
     for i = 1:7
         load(sprintf("../data/raw_data/subsonic/191028_Group1_TotalPressure_Port%d.mat", i)...
-        , "dataP");
-        total(:, i) = dataP(:, 12);
-    end  
+        , "dataP_std", "numScans");
+        d_pressures(2, i) = dataP_std(12) / sqrt(numScans) * 1.96;
+    end
     
 elseif trial == "supersonic"
     load("../data/raw_data/supersonic/191028_Group1_StaticTapData_supersonic_7.mat"...
-        , "dataP");
-   	static = dataP(:, 1:7);
-    
-    total = zeros(1000, 7);
+        , "Pstd", "numScans");
+    d_pressures(1, :) = Pstd(1:7) / sqrt(numScans) * 1.96;
     
     for i = 1:7
         load(sprintf("../data/raw_data/supersonic/191028_Group1_TotalPressure_Port%d.mat", i)...
-        , "dataP");
-        total(:, i) = dataP(:, 12);
-    end  
+        , "dataP_std", "numScans");
+        d_pressures(2, i) = dataP_std(12) / sqrt(numScans) * 1.96;
+    end
     
 else
     error("Please type either 'subsonic' or 'supersonic' in your function call")
