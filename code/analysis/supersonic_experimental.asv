@@ -1,4 +1,4 @@
-function mach = supersonic_experimental(pressure, gamma)
+function mach = supersonic_experimental(pressure)
     %{
     Return Mach numbers for the supersonic experimental case.
 
@@ -8,14 +8,14 @@ function mach = supersonic_experimental(pressure, gamma)
         Static and total pressures corresponding to each position.
         First row: Static port pressures
         Second row: Total pressures
-    gamma : float
-        Ratio of specific heats.
 
     Returns
     -------
     mach : matrix (1, 7)
         The Mach numbers for the input pressure data.
     %}
+
+    
     
     mach = zeros(1,7);
 end

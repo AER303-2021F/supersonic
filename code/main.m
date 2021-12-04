@@ -34,12 +34,15 @@ addpath('analysis')
 sub_pressure = get_pressures('subsonic');
 error = get_uncertainties('subsonic');
 
+% Initialize constants.
+gamma = 1.4; % Ratio of specific heats.
+
 % Get subsonic experimental mach and uncertainties.
-sub_mach_exp = subsonic_experimental(sub_pressure);
+sub_mach_exp = subsonic_experimental(sub_pressure, gamma);
 sub_mach_exp_err = subsonic_experimental_err(sub_pressure, error);
 
 % Get subsonic theoretical mach and uncertainties.
-sub_mach_thy = subsonic_theoretical(sub_pressure);
+sub_mach_thy = subsonic_theoretical(sub_pressure, gamma);
 sub_mach_thy_err = subsonic_theoretical_err(sub_pressure, error);
 
 % Prepare data for plotting.
@@ -66,12 +69,15 @@ clear % Clear all variables.
 sup_pressure = get_pressures('subsonic');
 error = get_uncertainties('subsonic');
 
+% Initialize constants.
+gamma = 1.4; % Ratio of specific heats.
+
 % Get subsonic experimental mach and uncertainties.
-sup_mach_exp = supersonic_experimental(sup_pressure);
+sup_mach_exp = supersonic_experimental(sup_pressure, gamma);
 sup_mach_exp_err = supersonic_experimental_err(sup_pressure, error);
 
 % Get subsonic theoretical mach and uncertainties.
-sup_mach_thy = supersonic_theoretical(sup_pressure);
+sup_mach_thy = supersonic_theoretical(sup_pressure, gamma);
 sup_mach_thy_err = supersonic_theoretical_err(sup_pressure, error);
 
 % Prepare data for plotting.

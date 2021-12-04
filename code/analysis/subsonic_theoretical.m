@@ -1,4 +1,4 @@
-function mach = subsonic_theoretical(pressure)
+function mach = subsonic_theoretical(pressure, gamma)
     %{
     Return Mach numbers for the subonic theoretical case.
 
@@ -8,6 +8,8 @@ function mach = subsonic_theoretical(pressure)
         Static and total pressures corresponding to each position.
         First row: Static port pressures
         Second row: Total pressures
+    gamma : float
+        Ratio of specific heats.
 
     Returns
     -------
