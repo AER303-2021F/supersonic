@@ -66,8 +66,8 @@ clear % Clear all variables.
 %% Supersonic Theoretical and Experimental Data, Plots, and Uncertainties.
 
 % Import data.
-sup_pressure = get_pressures('subsonic');
-error = get_uncertainties('subsonic');
+sup_pressure = get_pressures('supersonic');
+error = get_uncertainties('supersonic');
 
 % Initialize constants.
 gamma = 1.4; % Ratio of specific heats.
