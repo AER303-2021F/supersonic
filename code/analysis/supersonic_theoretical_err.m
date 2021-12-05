@@ -1,4 +1,4 @@
-function error = supersonic_theoretical_err(pressure, pressure_err)
+function error = supersonic_theoretical_err(pressure, pressure_err, gamma)
     %{
     Return uncertainty for the supersonic theoretical Mach numbers.
 
@@ -13,6 +13,8 @@ function error = supersonic_theoretical_err(pressure, pressure_err)
         to each position.
         First row: Static port pressures
         Second row: Total pressures
+    gamma : float
+        Ratio of specific heats.
 
     Returns
     -------

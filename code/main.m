@@ -39,11 +39,11 @@ gamma = 1.4; % Ratio of specific heats.
 
 % Get subsonic experimental mach and uncertainties.
 sub_mach_exp = subsonic_experimental(sub_pressure, gamma);
-sub_mach_exp_err = subsonic_experimental_err(sub_pressure, error);
+sub_mach_exp_err = subsonic_experimental_err(sub_pressure, error, gamma);
 
 % Get subsonic theoretical mach and uncertainties.
 sub_mach_thy = subsonic_theoretical(sub_pressure, gamma);
-sub_mach_thy_err = subsonic_theoretical_err(sub_pressure, error);
+sub_mach_thy_err = subsonic_theoretical_err(sub_pressure, error, gamma);
 
 % Prepare data for plotting.
 x = sub_mach_exp;
@@ -58,8 +58,8 @@ ypos = sub_mach_thy + sub_mach_thy_err;
 figure
 errorbar(x, y, yneg, ypos, xneg, xpos)
 title('Experimental and Theoretical Mach Comparison (Subsonic)')
-xlabel('Theoretical Mach')
-ylabel('Experimental Mach')
+xlabel('Experimental Mach')
+ylabel('Theoretical Mach')
 
 clear % Clear all variables.
 
@@ -74,11 +74,11 @@ gamma = 1.4; % Ratio of specific heats.
 
 % Get subsonic experimental mach and uncertainties.
 sup_mach_exp = supersonic_experimental(sup_pressure, gamma);
-sup_mach_exp_err = supersonic_experimental_err(sup_pressure, error);
+sup_mach_exp_err = supersonic_experimental_err(sup_pressure, error, gamma);
 
 % Get subsonic theoretical mach and uncertainties.
 sup_mach_thy = supersonic_theoretical(sup_pressure, gamma);
-sup_mach_thy_err = supersonic_theoretical_err(sup_pressure, error);
+sup_mach_thy_err = supersonic_theoretical_err(sup_pressure, error, gamma);
 
 % Prepare data for plotting.
 x = sup_mach_exp;
@@ -93,7 +93,7 @@ ypos = sup_mach_thy + sup_mach_thy_err;
 figure
 errorbar(x, y, yneg, ypos, xneg, xpos)
 title('Experimental and Theoretical Mach Comparison (Supersonic)')
-xlabel('Theoretical Mach')
-ylabel('Experimental Mach')
+xlabel('Experimental Mach')
+ylabel('Theoretical Mach')
 
 clear % Clear all variables.
