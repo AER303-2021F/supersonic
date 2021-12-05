@@ -42,24 +42,19 @@ sub_mach_exp = subsonic_experimental(sub_pressure, gamma);
 sub_mach_exp_err = subsonic_experimental_err(sub_pressure, error, gamma);
 
 % Get subsonic theoretical mach and uncertainties.
-sub_mach_thy = subsonic_theoretical(sub_pressure, gamma);
-sub_mach_thy_err = subsonic_theoretical_err(sub_pressure, error, gamma);
-
-% Prepare data for plotting.
-x = sub_mach_exp;
-xneg = sub_mach_exp - sub_mach_exp_err;
-xpos = sub_mach_exp + sub_mach_exp_err;
-
-y = sub_mach_thy;
-yneg = sub_mach_thy - sub_mach_thy_err;
-ypos = sub_mach_thy + sub_mach_thy_err;
+[sub_mach_thy, sub_mach_thy_err] = ...
+    subsonic_theoretical(sub_pressure, error, gamma);
 
 % Plot data
 figure
-errorbar(x, y, yneg, ypos, xneg, xpos)
+errorbar(sub_mach_exp, sub_mach_exp_err)
+hold on
+errorbar(sub_mach_thy, sub_mach_thy_err)
+
 title('Experimental and Theoretical Mach Comparison (Subsonic)')
-xlabel('Experimental Mach')
-ylabel('Theoretical Mach')
+xlabel("Port Number")
+ylabel("Mach Number")
+legend("Experimental", "Theoretical")
 
 clear % Clear all variables.
 
@@ -80,20 +75,16 @@ sup_mach_exp_err = supersonic_experimental_err(sup_pressure, error, gamma);
 sup_mach_thy = supersonic_theoretical(sup_pressure, gamma);
 sup_mach_thy_err = supersonic_theoretical_err(sup_pressure, error, gamma);
 
-% Prepare data for plotting.
-x = sup_mach_exp;
-xneg = sup_mach_exp - sup_mach_exp_err;
-xpos = sup_mach_exp + sup_mach_exp_err;
-
-y = sup_mach_thy;
-yneg = sup_mach_thy - sup_mach_thy_err;
-ypos = sup_mach_thy + sup_mach_thy_err;
 
 % Plot data
 figure
-errorbar(x, y, yneg, ypos, xneg, xpos)
+errorbar(sup_mach_exp, sup_mach_exp_err)
+hold on
+errorbar(sup_mach_thy, sup_mach_thy_err)
+
 title('Experimental and Theoretical Mach Comparison (Supersonic)')
-xlabel('Experimental Mach')
-ylabel('Theoretical Mach')
+xlabel("Port Number")
+ylabel("Mach Number")
+legend("Experimental", "Theoretical")
 
 clear % Clear all variables.
