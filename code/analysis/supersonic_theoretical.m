@@ -16,6 +16,15 @@ function mach = supersonic_theoretical(pressure, gamma)
     mach : matrix (1, 7)
         The Mach numbers for the input pressure data.
     %}
-    
+    area = [1.06 1 1.05 1.15 1.23 1.27 1.28];
     mach = zeros(1,7);
+    for i = 1:7
+        f = @(M) 1/M * ( (2/(gamma + 1)) * ...
+                (1 + (gamma - 1)/2 * M^2))^((gamma + 1)/ ...
+                (2*(gamma - 1))) - area(i);
+        mach(1,i)  = fzero(f, 1.2);
+        %right now port 1 is garbo
+    end
+    
+    
 end
