@@ -26,6 +26,6 @@ function mach = subsonic_experimental(pressure, gamma)
     term_2 = (gamma - 1) / gamma;
     
     % Calculate Mach.
-    mach_squared = term_1 .* ((tot_pressure ./ static_pressure) .^ term_2 - 1);
+    mach_squared = term_1 .* (((tot_pressure ./ static_pressure) .^ term_2) - 1);
     mach = sqrt(mach_squared);
 end
