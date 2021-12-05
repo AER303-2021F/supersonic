@@ -30,13 +30,13 @@ function mach = supersonic_experimental(pressure, gamma)
     t6 = - 1 / (gamma - 1);
     
     % Define the Mach equation.
-    fun = @(i, M) -t1(i) + ((t2 .* (M .^ 2)) .^ t3) .* ((t4 .* (M .^ 2) - t5) .^ t6);
+    fun = @(i, M) - t1(i) + ((t2 .* (M .^ 2)) .^ t3) .* ((t4 .* (M .^ 2) - t5) .^ t6);
     
     % Solve for the Mach numbers.
     temp_mach = zeros(1, 7);
     for i = 1:7
         f = @(M) fun(i, M);
-        temp_mach(i) = fzero(f, [1, 2]);
+        temp_mach(i) = fzero(f, 1.2);
     end
     
     mach = temp_mach;
