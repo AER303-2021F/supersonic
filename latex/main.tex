@@ -70,7 +70,7 @@
 \begin{abstract}
 
 
-\keywords{word_1 \and word_2 \and word_3 \and word_4}
+\keywords{Mach \and Schlieren \and Subsonic \and Supersonic \and Shock Wave}
 \end{abstract}
 
 
@@ -90,8 +90,10 @@ Refer to Table \ref{tab:nomenclature} for definitions and symbols common to this
         \toprule
         Symbol/Term & Description \\
         \midrule
-        & \\
-        & \\
+        $A$ & Nozzle cross-sectional area. \\
+        $A^*$ & Nozzle cross-sectional area at the throat. \\
+        $M$ & Mach number of the flow. \\
+        $\gamma$ & Ratio of the specific heats of the flow medium. \\
         \bottomrule
     \end{tabular}
     \caption{Commonly used symbols and terms.}
@@ -106,6 +108,47 @@ Refer to Table \ref{tab:nomenclature} for definitions and symbols common to this
 
 \newpage
 \section{Introduction and Background}\label{sec:introduction_and_background}
+
+This reports aims to explore the pressure and Mach distributions spanning a de Laval nozzle for the subsonic and supersonic mach regimes and compare the theoretically and experimentally attained Mach values. A secondary goal of the report is shock wave visualization using the Schlieren technique. For the remainder of this section, the theoretical introduction to the de Laval nozzle and Mach calculations will be detailed.
+
+\subsection{de Laval Nozzle}
+
+A de Laval nozzle is a special nozzle used to accelerate flow from subsonic to supersonic speeds from the converging-diverging geometry. The de Laval nozzle converges initially to accelerate the flow to reach Mach 1. Subsequent divergence accelerate the flow into the supersonic regime.\newline
+
+\noindent
+The area-Mach number relation, seen in equation \ref{eq:background_1}, describes the flow velocity in the de Laval nozzle to its geometry where $A$ is the nozzle cross sectional area, $A^*$ is the nozzle cross sectional area at the throat, $\gamma$ is the ratio of specific heats, and $M$ is the Mach experienced when the flow is passing through a cross section of area $A$.
+
+\begin{equation}
+    \frac{A}{A^*}=\frac{1}{M}\left[\frac{2}{\gamma + 1}\left(1 + \frac{\gamma - 1}{2}M^2\right)\right]^{\frac{\gamma + 1}{2(\gamma - 1)}}
+    \label{eq:background_1}
+\end{equation}
+
+\noindent
+Derived from the conservation of mass, the area-Mach number relation captures the behaviour of the de Laval nozzle as seen in figure \ref{fig:AM_relation}. For a subsonic Mach number ($M<1$), a decreasing cross-sectional area corresponds to an increasing Mach number; this is the case for the converging section of the de Laval nozzle. When $A/A^*=1$ (the throat of the nozzle), the Mach number is unity. For supersonic Mach numbers ($M>1$), the Mach number increases with an increasing cross-sectional area; this is characteristic of the de Laval nozzle's diverging section.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/area_mach_relation.png}
+    \caption{Area-Mach number relation for the de Laval nozzle.}
+    \label{fig:AM_relation}
+\end{figure}
+
+\subsection{Experimental Mach Calculations}
+
+Assuming a one-dimensional and isentropic flow though a de Laval nozzle, the subsonic Mach number can be calculated from experimental pressure data using the isentropic relation given in equation \ref{eq:isentropic_relation}. Solving for, the $M$, our isentropic relation takes the form of equation \ref{eq:sub_mach_relation}.
+
+\begin{multicols}{2}
+\begin{equation}
+    \frac{P_o}{P} = \left(1 + \frac{\gamma - 1}{2}M^2\right)^\frac{\gamma}{\gamma - 1}
+    \label{eq:isentropic_relation}
+\end{equation}
+\begin{equation}
+    M^2 = \frac{2}{\gamma - 1}\left[\left(\frac{P_o}{P}\right)^\frac{\gamma - 1}{\gamma} - 1\right]
+    \label{eq:sub_mach_relation}
+\end{equation}
+\end{multicols}
+
+\subsection{Theoretical Mach Calculations}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
