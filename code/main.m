@@ -69,7 +69,7 @@ gamma = 1.4; % Ratio of specific heats.
 
 % Get subsonic experimental mach and uncertainties.
 sup_mach_exp = supersonic_experimental(sup_pressure, gamma);
-sup_mach_exp_err = supersonic_experimental_err(sup_pressure, error, gamma);
+sup_mach_exp_err = supersonic_experimental_err(sup_mach_exp, sup_pressure, error, gamma);
 
 % Get subsonic theoretical mach and uncertainties.
 sup_mach_thy = supersonic_theoretical(sup_pressure, gamma);
