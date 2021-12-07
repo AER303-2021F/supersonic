@@ -118,10 +118,10 @@ This reports aims to explore the pressure and Mach distributions spanning a de L
 A de Laval nozzle is a special nozzle used to accelerate flow from subsonic to supersonic speeds from the converging-diverging geometry. The de Laval nozzle converges initially to accelerate the flow to reach Mach 1. Subsequent divergence accelerate the flow into the supersonic regime.\newline
 
 \noindent
-The area-Mach number relation, seen in equation \ref{eq:background_1}, describes the flow velocity in the de Laval nozzle to its geometry where $A$ is the nozzle cross sectional area, $A^*$ is the nozzle cross sectional area at the throat, $\gamma$ is the ratio of specific heats, and $M$ is the Mach experienced when the flow is passing through a cross section of area $A$.
+The area-Mach number relation, seen in equation \ref{eq:background_1}, describes the flow velocity in the de Laval nozzle to its geometry where $A$ is the nozzle cross sectional area, $A_*$ is the nozzle cross sectional area at the throat, $\gamma$ is the ratio of specific heats, and $M$ is the Mach experienced when the flow is passing through a cross section of area $A$.
 
 \begin{equation}
-    \frac{A}{A^*}=\frac{1}{M}\left[\frac{2}{\gamma + 1}\left(1 + \frac{\gamma - 1}{2}M^2\right)\right]^{\frac{\gamma + 1}{2(\gamma - 1)}}
+    \frac{A}{A_*}=\frac{1}{M}\left[\frac{2}{\gamma + 1}\left(1 + \frac{\gamma - 1}{2}M^2\right)\right]^{\frac{\gamma + 1}{2(\gamma - 1)}}
     \label{eq:background_1}
 \end{equation}
 
@@ -153,10 +153,9 @@ Assuming a one-dimensional and isentropic flow though a de Laval nozzle, the sub
 \noindent
 In the supersonic case, the static and total pressure measurements are taken on opposite sides of the bow shock formed ahead of the pitot tube. A figment pressure, $P'$, is assumed on the shock, allowing the ratio of the total to static pressure to be as follows:
 
-\begin{align*}
-    \frac{P_o}{P} &= \frac{P_o}{P'}\frac{P'}{P} \\
-    &= \left(1+\frac{\gamma - 1}{2}M_{<0}^2\right)^{\frac{\gamma}{\gamma - 1}}\left(\frac{2\gamma}{\gamma + 1}M_{>0}^2 - \frac{\gamma - 1}{\gamma + 1}\right)
-\end{align*}
+\begin{equation*}
+    \frac{P_o}{P} = \frac{P_o}{P'}\frac{P'}{P} = \left(1+\frac{\gamma - 1}{2}M_{<0}^2\right)^{\frac{\gamma}{\gamma - 1}}\left(\frac{2\gamma}{\gamma + 1}M_{>0}^2 - \frac{\gamma - 1}{\gamma + 1}\right)
+\end{equation*}
 
 \noindent
 But the supersonic and subsonic Mach are related using equation \ref{eq:mach_relation}.
@@ -175,6 +174,39 @@ As a result, the experimental pressure measurements can be directly related to t
 \end{equation}
 
 \subsection{Theoretical Mach Calculations}
+
+In addition to experimental determination, Mach can be calculated upon a theoretical basis for both the subsonic and supersonic cases.\newline
+
+\noindent
+For the subsonic case, the isentropic assumption holds due to no presence of shocks. We can also assume incompressibility such that $\rho=1.225\si{kg}.\si{m}^{-3}$. Applying Bernoulli's equation along a streamline, the relationship between the static and total pressures can be found as seen in equation \ref{eq:stat_tot_pressure}, Solving for the velocity presents equation \ref{eq:flow_velocity}.
+
+\begin{multicols}{4}
+\begin{equation}
+    P_o = P + \frac{1}{2}\rho U^2
+    \label{eq:stat_tot_pressure}
+\end{equation}
+\begin{equation}
+    U = \sqrt{\frac{2(P_o - P)}{\rho}}
+    \label{eq:flow_velocity}
+\end{equation}
+\begin{equation}
+    A_1U_1 = A_2U_2
+    \label{eq:area_velocity_relation}
+\end{equation}
+\begin{equation}
+    a = \sqrt{\frac{\gamma P}{\rho}}
+    \label{eq:speed_of_sound}
+\end{equation}
+\end{multicols}
+
+\noindent
+Once the velocity at a single point is calculated (using a pressure measurement), the continuity equation (seen in equation \ref{eq:area_velocity_relation}) can be applied to calculate the nozzle's cross sectional area and velocity at an arbitrary point along the nozzle. By determining the velocity distribution and dividing by the speed of sound calculated in equation \ref{eq:speed_of_sound}, the theoretical Mach distribution can be attained.
+
+\noindent
+For the supersonic case, the isentropic assumption still holds. Additionally, the construction of the de Laval nozzle ensures that the Mach at the throat will be $M_*=1$. The Mach at a point along the nozzle's span can then be calculated using equation \ref{eq:background_1} and numerically solving for $M$.\newline
+
+\noindent
+In both the subsonic and supersonic cases, the theoretical pressure distributions can be determined using the isentropic relation in equation \ref{eq:isentropic_relation}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
