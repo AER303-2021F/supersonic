@@ -304,6 +304,32 @@ The procedure used for the acquisition of pressure measurements and shock visual
 
 \section{Uncertainty Propagation}
 
+\subsection{Subsonic Mach}
+
+\begin{align*}
+    M &= \sqrt{\frac{2}{\gamma - 1}}\left[\left(\frac{P_o}{P}\right)^\frac{\gamma - 1}{\gamma} - 1\right]^{\frac{1}{2}} \\
+    \delta M &= \sqrt{\left(\frac{\partial M}{\partial P_o}\delta P_o\right)^2 + \left(\frac{\partial M}{\partial P}\delta P\right)^2}\;\text{where}\;
+    \frac{\partial M}{\partial P_o} = \frac{P^\frac{1 - \gamma}{2\gamma}P_o^{- \frac{1}{\gamma}}(\gamma - 1)^\frac{1}{2}}{2^\frac{1}{2}\gamma\left(P_o^\frac{\gamma - 1}{\gamma} - P^\frac{\gamma - 1}{\gamma}\right)^\frac{1}{2}}\;\text{,}\;\frac{\partial M}{\partial P} -\frac{P_o^\frac{\gamma - 1}{\gamma}P^\frac{1 - 3\gamma}{2\gamma}(\gamma - 1)^\frac{1}{2}}{2^\frac{1}{2}\gamma\left(P_o^\frac{\gamma - 1}{\gamma} - P^\frac{\gamma - 1}{\gamma}\right)^\frac{1}{2}}
+\end{align*}
+
+\subsection{Supersonic Mach}
+
+\begin{align*}
+    \frac{P_o}{P} &= \left(\frac{\gamma + 1}{2}M^2\right)^{\frac{\gamma}{\gamma - 1}}\left(\frac{2\gamma}{\gamma + 1}M^2 - \frac{\gamma - 1}{\gamma + 1}\right)^{-\frac{1}{\gamma - 1}} \\
+    &\Rightarrow g(P_o, P) = f(M) \\
+    &\Rightarrow \delta f = \sqrt{\left(\frac{\partial g}{\partial P_o}\delta P_o\right)^2 + \left(\frac{\partial g}{\partial P}\delta P\right)^2}\;\text{but}\;\delta f = \frac{\partial f}{\partial M} \delta M \\
+    &\Rightarrow \delta M = \left(\frac{\partial f}{\partial M}\right)^{-1}\sqrt{\left(\frac{\partial g}{\partial P_o}\delta P_o\right)^2 + \left(\frac{\partial g}{\partial P}\delta P\right)^2}
+\end{align*}
+
+\noindent
+where
+
+\begin{align*}
+    \frac{\partial f}{\partial M} &= \frac{\gamma (\gamma + 1) M}{\gamma - 1}\left(\frac{\gamma + 1}{2}M^2\right)^\frac{1}{\gamma - 1}\left(\frac{2\gamma}{\gamma + 1}M^2 - \frac{\gamma - 1}{\gamma + 1}\right)^{-\frac{1}{\gamma - 1}} + \frac{4\gamma M}{(\gamma + 1)(\gamma - 1)}\left(\frac{\gamma + 1}{2}M^2\right)^\frac{1}{\gamma - 1}\left(\frac{2\gamma}{\gamma + 1}M^2 - \frac{\gamma - 1}{\gamma + 1}\right)^{-\frac{\gamma}{\gamma - 1}} \\
+    \frac{\partial g}{\partial P} &= -\frac{P_o}{P^2} \\
+    \frac{\partial g}{\partial P_o} &= -\frac{1}{P}
+\end{align*}
+
 \section{MATLAB and Python Code}
 
 \end{document}
