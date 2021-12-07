@@ -93,6 +93,8 @@ Refer to Table \ref{tab:nomenclature} for definitions and symbols common to this
         $A$ & Nozzle cross-sectional area. \\
         $A^*$ & Nozzle cross-sectional area at the throat. \\
         $M$ & Mach number of the flow. \\
+        $P$ & Static pressure. \\
+        $P_o$ & Total pressure. \\
         $\gamma$ & Ratio of the specific heats of the flow medium. \\
         \bottomrule
     \end{tabular}
@@ -135,7 +137,7 @@ Derived from the conservation of mass, the area-Mach number relation captures th
 
 \subsection{Experimental Mach Calculations}
 
-Assuming a one-dimensional and isentropic flow though a de Laval nozzle, the subsonic Mach number can be calculated from experimental pressure data using the isentropic relation given in equation \ref{eq:isentropic_relation}. Solving for, the $M$, our isentropic relation takes the form of equation \ref{eq:sub_mach_relation}.
+Assuming a one-dimensional and isentropic flow though a de Laval nozzle, the subsonic Mach number can be calculated from experimental pressure data using the isentropic relation given in equation \ref{eq:isentropic_relation}; here, $P_o$ is the total pressure and $P$ is the static pressure. Solving for, the $M$, our isentropic relation takes the form of equation \ref{eq:sub_mach_relation}.
 
 \begin{multicols}{2}
 \begin{equation}
@@ -147,6 +149,30 @@ Assuming a one-dimensional and isentropic flow though a de Laval nozzle, the sub
     \label{eq:sub_mach_relation}
 \end{equation}
 \end{multicols}
+
+\noindent
+In the supersonic case, the static and total pressure measurements are taken on opposite sides of the bow shock formed ahead of the pitot tube. A figment pressure, $P'$, is assumed on the shock, allowing the ratio of the total to static pressure to be as follows:
+
+\begin{align*}
+    \frac{P_o}{P} &= \frac{P_o}{P'}\frac{P'}{P} \\
+    &= \left(1+\frac{\gamma - 1}{2}M_{<0}^2\right)^{\frac{\gamma}{\gamma - 1}}\left(\frac{2\gamma}{\gamma + 1}M_{>0}^2 - \frac{\gamma - 1}{\gamma + 1}\right)
+\end{align*}
+
+\noindent
+But the supersonic and subsonic Mach are related using equation \ref{eq:mach_relation}.
+
+\begin{equation}
+    M_{<0}^2=\frac{M_{>0}^2+\frac{2}{\gamma - 1}}{\frac{2\gamma}{\gamma - 1}M_{>0}^2 - 1}
+    \label{eq:mach_relation}
+\end{equation}
+
+\noindent
+As a result, the experimental pressure measurements can be directly related to the supersonic Mach using equation \ref{eq:supersonic_mach_relation} which can be numerically solved to get the supersonic Mach value.
+
+\begin{equation}
+    \frac{P_o}{P} = \left(\frac{\gamma + 1}{2}M_{>0}^2\right)^{\frac{\gamma}{\gamma - 1}}\left(\frac{2\gamma}{\gamma + 1}M_{>0}^2 - \frac{\gamma - 1}{\gamma + 1}\right)^{-\frac{1}{\gamma - 1}}
+    \label{eq:supersonic_mach_relation}
+\end{equation}
 
 \subsection{Theoretical Mach Calculations}
 
