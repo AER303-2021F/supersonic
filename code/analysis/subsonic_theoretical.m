@@ -33,7 +33,7 @@ function [mach, error] = subsonic_theoretical(pressure, pressure_err, gamma)
     A = [1.06, 1, 1.05, 1.15, 1.23, 1.27, 1.28, 1.3, 1.3, 1.3];
     % Area ratios, from lab document
     
-    i_ref = 2; % For now, using port 2 as reference
+    i_ref = 1; % Using port 1 as reference
     
     % Reference experimental pressures
     P_o = pressure(2, i_ref);  % Total pressure, assumed constant
