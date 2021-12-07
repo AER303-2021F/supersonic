@@ -1,4 +1,4 @@
-function mach = supersonic_theoretical(pressure, gamma)
+function [mach, err] = supersonic_theoretical(gamma)
     %{
     Return Mach numbers for the supersonic theoretical case.
 
@@ -22,7 +22,11 @@ function mach = supersonic_theoretical(pressure, gamma)
         f = @(M) 1/M * ( (2/(gamma + 1)) * ...
                 (1 + (gamma - 1)/2 * M^2))^((gamma + 1)/ ...
                 (2*(gamma - 1))) - area(i);
-        mach(1,i)  = fzero(f, 1.2);
+        if i == 1
+            mach(1,i)  = fzero(f, 0.9);
+        else
+            mach(1,i)  = fzero(f, 1.2);
+        end 
         %right now port 1 is garbo
     end
     
