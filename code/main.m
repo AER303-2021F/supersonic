@@ -20,6 +20,22 @@ xlabel("Port Number")
 ylabel("Pressure (Pa)")
 legend("Static Pressure", "Total Pressure")
 title(sprintf("Pressures for %s Experiment", trial));
+saveas(gcf, '..\latex\figures\subsonic_pressure_distributions.png')
+
+trial = "supersonic"; % Sub- or super-sonic
+
+pressures = get_pressures(trial);
+uncertainties = get_uncertainties(trial);
+
+figure
+errorbar(pressures(1,:), uncertainties(1,:))
+hold on
+errorbar(pressures(2,:), uncertainties(2,:))
+xlabel("Port Number")
+ylabel("Pressure (Pa)")
+legend("Static Pressure", "Total Pressure")
+title(sprintf("Pressures for %s Experiment", trial));
+saveas(gcf, '..\latex\figures\supersonic_pressure_distributions.png')
 
 clear % Clear all variables.
 
@@ -50,11 +66,11 @@ figure
 errorbar(sub_mach_exp, sub_mach_exp_err)
 hold on
 errorbar(sub_mach_thy, sub_mach_thy_err)
-
 title('Experimental and Theoretical Mach Comparison (Subsonic)')
 xlabel("Port Number")
 ylabel("Mach Number")
 legend("Experimental", "Theoretical")
+saveas(gcf, '..\latex\figures\subsonic_mach_distributions.png')
 
 clear % Clear all variables.
 
@@ -81,10 +97,10 @@ figure
 errorbar(sup_mach_exp, sup_mach_exp_err)
 hold on
 errorbar(sup_mach_thy, sup_mach_thy_err)
-
 title('Experimental and Theoretical Mach Comparison (Supersonic)')
 xlabel("Port Number")
 ylabel("Mach Number")
 legend("Experimental", "Theoretical")
+saveas(gcf, '..\latex\figures\supersonic_mach_distributions.png')
 
 clear % Clear all variables.
