@@ -112,14 +112,14 @@ Refer to Table \ref{tab:nomenclature} for definitions and symbols common to this
 \newpage
 \section{Introduction and Background}\label{sec:introduction_and_background}
 
-This reports aims to explore the pressure and Mach distributions spanning a de Laval nozzle for the subsonic and supersonic mach regimes and compare the theoretically and experimentally attained Mach values. A secondary goal of the report is shock wave visualization using the Schlieren technique. For the remainder of this section, the theoretical introduction to the de Laval nozzle and Mach calculations will be detailed.
+This report aims to explore the pressure and Mach distributions spanning a de Laval nozzle for the subsonic and supersonic Mach regimes and compare the theoretically and experimentally attained Mach values. A secondary goal of the report is shock wave visualization using the Schlieren technique. For the remainder of this section, the background to the de Laval nozzle, Mach calculations, and the concept of Schlieren imaging will be detailed.
 
 \subsection{de Laval Nozzle}
 
-A de Laval nozzle is a special nozzle used to accelerate flow from subsonic to supersonic speeds from the converging-diverging geometry. The de Laval nozzle converges initially to accelerate the flow to reach Mach 1. Subsequent divergence accelerate the flow into the supersonic regime.\newline
+A de Laval nozzle is a special nozzle used to accelerate flow from subsonic to supersonic speeds from the converging-diverging geometry. The de Laval nozzle converges initially to accelerate the flow to reach Mach 1. Subsequent divergence accelerates the flow into the supersonic regime.\newline
 
 \noindent
-The area-Mach number relation, seen in equation \ref{eq:background_1}, describes the flow velocity in the de Laval nozzle to its geometry where $A$ is the nozzle cross sectional area, $A_*$ is the nozzle cross sectional area at the throat, $\gamma$ is the ratio of specific heats, and $M$ is the Mach experienced when the flow is passing through a cross section of area $A$.
+The area-Mach number relation, seen in equation \ref{eq:background_1}, describes the flow velocity in the de Laval nozzle to its geometry where $A$ is the nozzle cross-sectional area, $A_*$ is the nozzle cross-sectional area at the throat, $\gamma$ is the ratio of specific heats, and $M$ is the Mach experienced when the flow is passing through a cross-section of area $A$.
 
 \begin{equation}
     \frac{A}{A_*}=\frac{1}{M}\left[\frac{2}{\gamma + 1}\left(1 + \frac{\gamma - 1}{2}M^2\right)\right]^{\frac{\gamma + 1}{2(\gamma - 1)}}
@@ -138,7 +138,7 @@ Derived from the conservation of mass, the area-Mach number relation captures th
 
 \subsection{Experimental Mach Calculations}
 
-Assuming a one-dimensional and isentropic flow though a de Laval nozzle, the subsonic Mach number can be calculated from experimental pressure data using the isentropic relation given in equation \ref{eq:isentropic_relation}; here, $P_o$ is the total pressure and $P$ is the static pressure. Solving for, the $M$, our isentropic relation takes the form of equation \ref{eq:sub_mach_relation}.
+Assuming a one-dimensional and isentropic flow through a de Laval nozzle, the subsonic Mach number can be calculated from experimental pressure data using the isentropic relation given in equation \ref{eq:isentropic_relation}; here, $P_o$ is the total pressure and $P$ is the static pressure. Solving for, the $M$, our isentropic relation takes the form of equation \ref{eq:sub_mach_relation}.
 
 \begin{multicols}{2}
 \begin{equation}
@@ -201,13 +201,20 @@ For the subsonic case, the isentropic assumption holds due to no presence of sho
 \end{multicols}
 
 \noindent
-Once the velocity at a single point is calculated (using a pressure measurement), the continuity equation (seen in equation \ref{eq:area_velocity_relation}) can be applied to calculate the nozzle's cross sectional area and velocity at an arbitrary point along the nozzle. By determining the velocity distribution and dividing by the speed of sound calculated in equation \ref{eq:speed_of_sound}, the theoretical Mach distribution can be attained.
+Once the velocity at a single point is calculated (using a pressure measurement), the continuity equation (seen in equation \ref{eq:area_velocity_relation}) can be applied to calculate the nozzle's cross-sectional area and velocity at an arbitrary point along the nozzle's span. By determining the velocity distribution and dividing by the speed of sound calculated in equation \ref{eq:speed_of_sound}, the theoretical Mach distribution can be attained.
 
 \noindent
 For the supersonic case, the isentropic assumption still holds. Additionally, the construction of the de Laval nozzle ensures that the Mach at the throat will be $M_*=1$. The Mach at a point along the nozzle's span can then be calculated using equation \ref{eq:background_1} and numerically solving for $M$.\newline
 
 \noindent
 In both the subsonic and supersonic cases, the theoretical pressure distributions can be determined using the isentropic relation in equation \ref{eq:isentropic_relation}
+
+\subsection{Schlieren Imaging}
+
+The Schlieren imaging technique is a process of visualizing density changes in a flow. Since shock waves are rapid changes in flow density, the Schlieren technique is commonly used in shock visualization.\newline
+
+\noindent
+The Schlieren device passes a point light source through a lens to produce a collimated light beam. This beam is then passed through the cross-section of the de Laval nozzle. The density changes in the flow (due to shocks) will alter the refraction index of the air and distort the light passing through. The light is then gathered at another lens which directs the light to an imaging device. At the focal point of this second lens will be a knife-edge which acts to block half of the refracted light causing a shadow in the image representing a shock wave.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
