@@ -22,18 +22,20 @@ otherwise the file paths will be messed up.
 
 pressures = zeros(2, 7);
 
+static_temp = zeros(7, 7);
+
 if trial == "subsonic"
-    % Static Ports
-    load("../data/raw_data/subsonic/191028_Group1_StaticTapData_supersonic_7.mat"...
-        , "Pmean");
-    pressures(1, :) = Pmean(1:7);
-    
+    % NOTE: LOADS STATIC PRESSURES FROM TOTAL READINGS USING ALTERNATE
+    % DATASET
     % Total Ports
     for i = 1:7
-        load(sprintf("../data/raw_data/subsonic/191028_Group1_TotalPressure_Port%d.mat", i)...
-        , "totalP");
+        load(sprintf("../data/raw_data/subsonic/TotalPressure_Port%d_Sub.mat", i)...
+        , "totalP", "dataP_mean");
         pressures(2, i) = totalP;
-    end  
+        static_temp(i, :) = dataP_mean(1:7);
+    end
+    
+    pressures(1, :) = mean(static_temp, 1);
     
 elseif trial == "supersonic"
     load("../data/raw_data/supersonic/191028_Group1_StaticTapData_supersonic_7.mat"...
