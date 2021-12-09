@@ -34,7 +34,14 @@ function mach = supersonic_experimental(pressure, gamma)
     
     % Solve for the Mach numbers.
     temp_mach = zeros(1, 7);
-    for i = 1:7
+    
+    % SPECIAL CASE: i = 1 (subsonic)
+    f = @(M) fun(1, M);
+    temp_mach(1) = fzero(f, 0.6); % Use subsonic intiial guess, otherwise
+                                  % fzero diverges
+    
+    % Other ports use supersonic initial guess
+    for i = 2:7
         f = @(M) fun(i, M);
         temp_mach(i) = fzero(f, 1.2);
     end

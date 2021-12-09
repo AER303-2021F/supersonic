@@ -1,4 +1,4 @@
-function [mach, error] = subsonic_theoretical(pressure, pressure_err, gamma)
+function [mach, mach_err, p, p_err] = subsonic_theoretical(pressure, pressure_err, gamma)
     %{
     Return Mach numbers for the subonic theoretical case.\
 
@@ -20,9 +20,14 @@ function [mach, error] = subsonic_theoretical(pressure, pressure_err, gamma)
     -------
     mach : matrix (1, 7)
         The Mach numbers for the input pressure data.
-    error : matrix (1, 7)
+    mach_err : matrix (1, 7)
         The Mach number uncertainties.
-    
+    p : matrix (1, 7)
+        The pressure for the theoretical data derived from the pressure at
+        port 1
+    p_err : matrix(1, 7)
+        Uncertainties associated with the pressures.
+
     Notes
     -----
     Uses only a single port's pressures for calculations.
@@ -39,7 +44,7 @@ function [mach, error] = subsonic_theoretical(pressure, pressure_err, gamma)
     P_o = pressure(2, i_ref);  % Total pressure, assumed constant
     dP_o = pressure_err(2, i_ref);
     P_1 = pressure(1, i_ref);
-    dP_1 = pressure_err(2, i_ref);
+    dP_1 = pressure_err(1, i_ref);
     
     % Flow velocity at reference port
     U_1 = sqrt(2 * (P_o - P_1)/rho); 
@@ -53,7 +58,7 @@ function [mach, error] = subsonic_theoretical(pressure, pressure_err, gamma)
 
     % Calculate Pressure using incompressible Bernoulli
     P_2 = P_o - 1/2 .* rho .* U_2.^2;
-    dP_2 = rho * U_2 .* dU_2;
+    dP_2 = sqrt(dP_o^2 +  (rho * U_2 .* dU_2).^2);
 
     % Calculate local speed of sound
     a = sqrt(gamma * P_2./rho);
@@ -61,5 +66,8 @@ function [mach, error] = subsonic_theoretical(pressure, pressure_err, gamma)
     
     % Calculate mach number at each port
     mach = U_2 ./ a;
-    error = sqrt((1./a .* dU_2).^2 + (U_2 ./ a.^2 .* da).^2);
+    mach_err = sqrt((1./a .* dU_2).^2 + (U_2 ./ a.^2 .* da).^2);
+    
+    p = P_2;
+    p_err = dP_2;
 end
