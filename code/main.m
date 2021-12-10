@@ -159,4 +159,4 @@ legend("Experimental", "Theoretical", "Location","best",...
     "interpreter", "latex")
 grid on
 saveas(gcf, '..\latex\figures\supersonic_mach_distributions.png')
-clear% Clear all variables.
+% Clear all variables.
