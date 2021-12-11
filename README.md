@@ -16,4 +16,4 @@ The repository is structured in five folders:
 
 ### Running Data Analysis Workflow
 
-The data analysis workflow is structured through a functional programming paradigm where analysis code is called from a single script. To run the data analysis workflow, navigate to the code directory in MATLAB and run the `main.m` file. The script will load the data from the ***data*** directory, perform the analysis, and populate the figures folder in the ***latex*** directory with the most recent plots.
+The data analysis workflow is structured through a functional programming paradigm where analysis code is called from a single script. To run the data analysis workflow, navigate to the `code` directory in MATLAB and run the `main.m` file. The script will load the data from the ***data*** directory, perform the analysis, and populate the figures folder in the ***latex*** directory with the most recent plots.
